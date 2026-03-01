@@ -33,6 +33,9 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     volumes:
       - db_data:/var/lib/mysql
+  redis:
+    image: redis:alpine
+    restart: always
 
 volumes:
   db_data: #объявляем именованый том

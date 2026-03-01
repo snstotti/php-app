@@ -2,7 +2,9 @@
 FROM php:8.2-fpm
 
 # Устанавливаем расширения для работы с MySQL
-RUN docker-php-ext-install pdo pdo_mysql
+RUN docker-php-ext-install pdo pdo_mysql \
+    && pecl install redis \
+    && docker-php-ext-enable redis
 
 # создаем системного пользователя для запуска команд PHP
 RUN useradd -G www-data,root -u 1000 -d /home/dev dev
